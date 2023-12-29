@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 A function named `index_range` that takes two integer arguments
 `page` and `page_size`. The function should return a tuple of size
@@ -6,7 +7,8 @@ range of indexes to return in a list for those particular pagination
 parameters. Page numbers are 1-indexed, i.e. the first page is page 1.
 """
 
-def index_range(page :int, page_size :int) -> tuple:
+
+def index_range(page: int, page_size: int) -> tuple:
     """
     Returns a tuple containing the start and end index for
     a page based on the `page` and `page_size` parameters.
