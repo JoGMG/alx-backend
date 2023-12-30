@@ -13,7 +13,7 @@ Make sure to reuse `get_page` in your implementation.
 """
 import csv
 import math
-from typing import List, Dict
+from typing import List
 
 
 def index_range(page: int, page_size: int) -> tuple:
@@ -68,7 +68,7 @@ class Server:
             return []
         return data[start:end]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """
         Paginates and returns data results within the index start
         and end range along with pagination parameters.
@@ -86,6 +86,6 @@ class Server:
             "data": page_data,
             "next_page": page + 1 if end < len(data) else None,
             "previous_page": page - 1 if start > 0 else None,
-            "total_pages": math.ceil(len(data) / page_size)
+            "total_pages": math.ceil(len(data) / page_size),
         }
         return result
