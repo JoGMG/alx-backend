@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 """
-Pagination of a CSV dataset using `index_range` function
-to get only the data within the start and end index range.
+Implements a `get_hyper` method that takes the same arguments
+(and defaults) as `get_page` and returns a dictionary containing
+the following key-value pairs:
+    - `page_size`: the length of the returned dataset page
+    - `page`: the current page number
+    - `data`: the dataset page (equivalent to return from previous task)
+    - `next_page`: number of the next page, `None` if no next page
+    - `prev_page`: number of the previous page, `None` if no previous page
+    - `total_pages`: the total number of pages in the dataset as an integer
+Make sure to reuse `get_page` in your implementation.
 """
 import csv
 import math
@@ -59,3 +67,28 @@ class Server:
         if start > len(data):
             return []
         return data[start:end]
+
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+        """
+        Paginates and returns data results within the index start
+        and end range along with pagination parameters.
+
+        Arguments:
+            - `page`: page number
+            - `page_size`: size of page
+        """
+        assert (isinstance(page, int) and page > 0
+                and isinstance(page_size, int) and page_size > 0)
+        start, end = index_range(page, page_size)
+        data = self.dataset()
+        if start > len(data):
+            return []
+        result = {
+            "page_size": page_size,
+            "page": page,
+            "data": data[start:end],
+            "next_page": page + 1 if end < len(data) else None,
+            "previous_page": page - 1 if start > 0 else None,
+            "total_pages": len(data) // page_size
+        }
+        return result
