@@ -85,6 +85,6 @@ class Server:
             "data": self.get_page(page, page_size),
             "next_page": page + 1 if end < len(data) else None,
             "previous_page": page - 1 if start > 0 else None,
-            "total_pages": len(data) // page_size
+            "total_pages": round(len(data) / page_size)
         }
         return result
