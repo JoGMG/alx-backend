@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """
+Pagination of a CSV dataset using `index_range` function
+to get only the data within the start and end index range.
 """
 import csv
 import math
