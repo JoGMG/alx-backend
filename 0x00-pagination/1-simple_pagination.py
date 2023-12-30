@@ -49,9 +49,9 @@ class Server:
 
         Arguments:
             - `page`: page number
-            - `page_size`: size of page 
+            - `page_size`: size of page
         """
-        assert (isinstance(page, int) and page > 0 
+        assert (isinstance(page, int) and page > 0
                 and isinstance(page_size, int) and page_size > 0)
         start, end = index_range(page, page_size)
         data = self.dataset()
