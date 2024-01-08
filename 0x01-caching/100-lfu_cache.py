@@ -77,7 +77,7 @@ class LFUCache(BaseCaching):
         if key is not None and key in self.cache_data:
             self.__update(key)
         return self.cache_data.get(key, None)
-    
+
     def __update(self, key):
         """
         Updates the frequency of a key.
